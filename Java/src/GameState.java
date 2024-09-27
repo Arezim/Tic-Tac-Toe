@@ -234,4 +234,9 @@ public class GameState {
 		System.out.println();
 	}
 
+	public int getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+
 }
