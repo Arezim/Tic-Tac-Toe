@@ -25,7 +25,7 @@ public class Main {
 	public static void main(final String[] args) {
 
 		// Initialize the game state
-		final GameState gameState = new GameState("x");
+		final GameState gameState = new GameState("x"); // <-- specify starting player here (x or o)
 		// Optionally apply some initial moves
 
 		gameState.applyMove(4);
@@ -53,7 +53,7 @@ public class Main {
 			}
 
 			if (mv.move == -1) {
-				// No moves left
+				// if no move is possible, break the loop and end the game
 				break;
 			}
 
