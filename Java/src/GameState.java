@@ -29,15 +29,21 @@ public class GameState {
 	/**
 	 * Creates a new initial game state (with empty board).
 	 */
-	public GameState() {
+	public GameState(String startingPlayer) {
 		board = new int[NUM_ROWS * NUM_COLS];
 		
 		legalMoves = new ArrayList<Integer>(9);
 		for (int i = 0; i < 9; ++i) {
 			legalMoves.add(Integer.valueOf(i));
 		}
-		
-		currentPlayer = PLAYER_1;
+
+		if(startingPlayer.equalsIgnoreCase("x")){
+			currentPlayer = PLAYER_1;
+		}else if(startingPlayer.equalsIgnoreCase("o")){
+			currentPlayer = PLAYER_2;
+		}else{
+			System.out.println("ERROR WHILE CREATING GAME STATE");
+		}
 		winner = 0;
 	}
 	
@@ -210,6 +216,22 @@ public class GameState {
 				LINES_TO_CHECK[i][3][1] = rowColToIndex(new int[] {2, 0});
 			}
 		}
+	}
+
+	public void printBoard(){
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 3; j++){
+				if(board[i*3+j] == 1){
+					System.out.print("X ");
+				}else if(board[i*3+j] == -1){
+					System.out.print("O ");
+				}else{
+					System.out.print(". ");
+				}
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 }
